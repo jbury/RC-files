@@ -27,5 +27,5 @@ function cs(){
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 ## Setting the prompt
-PROMPT='[%2c] '
-RPROMPT='[%n]'
+PROMPT='[%n] '
+RPROMPT='[%2c]'
