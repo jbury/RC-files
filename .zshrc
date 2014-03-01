@@ -12,20 +12,33 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-
+autoload -U colors && colors
 
 export BROWSER="firefox"
 export EDITOR="vim"
 
 alias ls="ls --color -F"
 
+function school(){
+	ssh jbury@eng.utoledo.edu
+}
+
 function cs(){
 	cd "$@" && ls
+}
+
+function drive(){
+	currentPath=`pwd`
+	cd ~/Documents/UT-Drive/node_modules/droppy/
+	clear
+	node droppy
+	cd $currentPath
 }
 
 ## Case-insensitive (all), partial-word and then substring completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 ## Setting the prompt
-PROMPT='[%n] '
+PROMPT='%F{cyan}[%n] %F{red}~%f '
 RPROMPT='[%2c]'
+
