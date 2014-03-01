@@ -11,6 +11,14 @@ lab(){
 	ssh ne102618l
 }
 
+drive(){
+	currentPath=`pwd`
+	cd ~/Documents/UT-Drive/node_modules/droppy/
+	clear
+	node droppy
+	cd $currentPath
+}
+
 export PS1="\[\033[1;33m\] \h\[\033[1;34m\] [\w] \[\033[1;31m\]$\[\033[0m\] "
 
 if [ `hostname` = "green.eng.utoledo.edu" ]; then
