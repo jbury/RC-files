@@ -1,0 +1,51 @@
+mesg n
+
+alias cls='clear; ls'
+alias gcc='gcc -std=gnu99'
+
+cs() {
+	cd "$@" && ls
+}
+
+lab(){
+	local labBase="ne1026"
+	local labName
+	let END=31 i=1
+	while ((i<=END)); do
+		if [ "$i" -lt 10 ]; then
+			i=0$i
+		fi
+
+		labName=$labBase$i"l"
+		if [[ `hostname` = green* ]] || [[ `hostname` = blue* ]] || [[ `hostname` = gold* ]] ; then
+			if /usr/sbin/ping $labName 1 > /dev/null; then
+				ssh $labName
+				break
+			else
+				echo "$labName is down, trying next computer"
+			fi
+		else
+			if ping -w 1 $labName > /dev/null; then
+				ssh $labName
+				break
+			else
+				echo "$labName is down, trying next computer"
+			fi	
+		fi
+		let i=$i+1
+	done
+}
+
+zone(){
+	ssh 131.183.18.200
+}
+
+PS1="\[\033[1;33m\] \h\[\033[1;34m\] [\w] \[\033[1;31m\]$\[\033[0m\] "
+
+if [[ `hostname` = green* ]] || [[ `hostname` = blue* ]] || [[ `hostname` = gold* ]] ; then
+	echo "On $HOSTNAME, sshing to lab computer"
+	lab
+else	
+	alias ls='ls --color'
+	echo "On $HOSTNAME"
+fi
