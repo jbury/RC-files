@@ -12,12 +12,17 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+bindkey "^[OH" beginning-of-line
+bindkey "^[OF" end-of-line
+bindkey "^[[3~" delete-char
+
 autoload -U colors && colors
 
 export BROWSER="firefox"
 export EDITOR="vim"
 
 alias ls="ls --color -F"
+alias yum="sudo yum"
 
 function school(){
 	ssh jbury@eng.utoledo.edu
@@ -29,7 +34,7 @@ function cs(){
 
 function drive(){
 	currentPath=`pwd`
-	cd ~/Documents/UT-Drive/node_modules/droppy/
+	cd ~/Workspace/node/UT-Drive/node_modules/droppy/
 	clear
 	node droppy
 	cd $currentPath
@@ -41,4 +46,3 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 ## Setting the prompt
 PROMPT='%F{cyan}[%n] %F{red}~%f '
 RPROMPT='[%2c]'
-
