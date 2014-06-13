@@ -12,6 +12,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+eval `dircolors ~/.dir_colors`
+
 bindkey "^[OH" beginning-of-line
 bindkey "^[OF" end-of-line
 bindkey "^[[3~" delete-char
@@ -23,6 +25,11 @@ export EDITOR="vim"
 
 alias ls="ls --color -F"
 alias yum="sudo yum"
+alias make="sudo make"
+
+function cls(){
+    clear && ls
+}
 
 function school(){
 	ssh jbury@eng.utoledo.edu
