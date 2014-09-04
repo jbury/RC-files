@@ -22,6 +22,7 @@ autoload -U colors && colors
 
 export BROWSER="firefox"
 export EDITOR="vim"
+export TERM=xterm-256color
 
 alias ls="ls --color -F"
 alias yum="sudo yum"
@@ -29,10 +30,6 @@ alias make="sudo make"
 
 function cls(){
     clear && ls
-}
-
-function school(){
-	ssh jbury@eng.utoledo.edu
 }
 
 function cs(){

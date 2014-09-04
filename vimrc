@@ -24,8 +24,8 @@ set number
 colorscheme inkpot 
 
 set cindent
-set tabstop=3
-set shiftwidth=3
+set tabstop=4
+set shiftwidth=4
 
 set laststatus=2 "show the status line
 set statusline=%-10.3n  "buffer number
