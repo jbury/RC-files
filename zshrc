@@ -33,10 +33,19 @@ function cls(){
 }
 
 function cs(){
-	cd "$@" && ls
+	cd "$1" && ls
 }
 
-function nginx(){
+function cdls(){
+	if [ -z "$1" ]
+	then
+		cd && clear && ls
+	else
+		cd "$1" && clear && ls
+	fi
+}
+
+function nginx-restart(){
 	sudo service nginx restart
 }
 
