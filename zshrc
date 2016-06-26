@@ -8,9 +8,16 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/jruby/.zshrc'
 
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+#Should make alt+tab not cause putty windows to suspend processes
+stty ixany
+stty ixoff -ixon
+
 
 eval `dircolors ~/.dir_colors`
 
@@ -20,30 +27,31 @@ bindkey "^[[3~" delete-char
 
 autoload -U colors && colors
 
-export BROWSER="firefox"
 export EDITOR="vim"
 export TERM=xterm-256color
 
+#dumb aliases
+alias grap="grep"
+
+#flag aliases
 alias ls="ls --color -F"
 alias yum="sudo yum"
 alias make="sudo make"
+alias df="df -BG"
+alias grep="grep --color=always"
+
+#shorthand aliases
+alias gits="git status"
+alias gita="git commit --amend"
+alias stata="statusall"
+alias c="cd ..;"
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
+alias sshconf="vim ~/.ssh/config"
 
 function cls(){
     clear && ls
-}
-
-function cs(){
-	cd "$1" && ls
-}
-
-function cdls(){
-	if [ -z "$1" ]
-	then
-		cd && clear && ls
-	else
-		cd "$1" && clear && ls
-	fi
-}
+    }
 
 function nginx-restart(){
 	sudo service nginx restart
@@ -52,6 +60,10 @@ function nginx-restart(){
 ## Case-insensitive (all), partial-word and then substring completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
+
 ## Setting the prompt
-PROMPT='%F{cyan}[%n] %F{red}~%f '
+
+PROMPT='%F{green}[%m] %F{cyan}[%n] %F{red}~%f '
 RPROMPT='[%2c]'
+
+cls
