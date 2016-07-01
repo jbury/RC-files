@@ -35,7 +35,6 @@ alias grap="grep"
 
 #flag aliases
 alias ls="ls --color -F"
-alias yum="sudo yum"
 alias make="sudo make"
 alias df="df -BG"
 alias grep="grep --color=always"
